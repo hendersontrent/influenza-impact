@@ -3,4 +3,4 @@ Builds a Bayesian model to test the causal impact of COVID-19 on influenza in Au
 
 ## Example model output
 
-![](https://github.com/hendersontrent/influenza-impact/blob/main/output/causal-impact-multivariate.png)
+![](https://github.com/hendersontrent/influenza-impact/blob/trent-dev/output/causal-impact-multivariate.png)
