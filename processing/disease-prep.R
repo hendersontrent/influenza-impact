@@ -69,19 +69,21 @@ travel <- read_excel("data/flights.xlsx", sheet = 2) %>%
   clean_names() %>%
   dplyr::select(c(1:3)) %>%
   drop_na() %>%
+  filter(!agrepl("Year", year)) %>%
   mutate(monthcode = case_when(
-         month == "Jan" ~ "01",
-         month == "Feb" ~ "02",
-         month == "Mar" ~ "03",
-         month == "Apr" ~ "04",
-         month == "May" ~ "05",
-         month == "Jun" ~ "06",
-         month == "Jul" ~ "07",
-         month == "Aug" ~ "08",
-         month == "Sep" ~ "09",
-         month == "Oct" ~ "10",
-         month == "Nov" ~ "11",
-         month == "Dec" ~ "12")) %>%
+         month == "Jan"    ~ "01",
+         month == "Feb"    ~ "02",
+         month == "Mar"    ~ "03",
+         month == "Apr"    ~ "04",
+         month == "May"    ~ "05",
+         month == "Jun"    ~ "06",
+         month == "Jul"    ~ "07",
+         month == "Aug"    ~ "08",
+         month == "August" ~ "08",
+         month == "Sep"    ~ "09",
+         month == "Oct"    ~ "10",
+         month == "Nov"    ~ "11",
+         month == "Dec"    ~ "12")) %>%
   mutate(the_date_format = paste0(year,"-",monthcode,"-01")) %>%
   mutate(the_date_format = as.Date(the_date_format)) %>%
   dplyr::select(c(the_date_format, hours)) %>%

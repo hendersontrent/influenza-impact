@@ -45,5 +45,4 @@ if (!exists(keepers)) {
 
 # Load data and process it
 
-source("processing/data-load.R")
 source("processing/disease-prep.R")
