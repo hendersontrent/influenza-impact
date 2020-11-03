@@ -46,3 +46,7 @@ if (!exists(keepers)) {
 # Load data and process it
 
 source("processing/disease-prep.R")
+
+# Create an output folder if none exists
+
+if(!dir.exists('output')) dir.create('output')
