@@ -12,9 +12,6 @@ cleaner <- function(filepath){
     mutate(the_date = paste0("01-",month,"-",year)) %>%
     mutate(the_date_format = as.Date(the_date, "%d-%b-%Y")) %>%
     mutate(indicator = case_when(
-      year == 2020 & month == "Aug" ~ "Remove",
-      year == 2020 & month == "Sep" ~ "Remove",
-      year == 2020 & month == "Oct" ~ "Remove",
       year == 2020 & month == "Nov" ~ "Remove",
       year == 2020 & month == "Dec" ~ "Remove",
       TRUE                          ~ "Keep")) %>% # No data for these months which distorts ts modelling
