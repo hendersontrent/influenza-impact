@@ -115,7 +115,7 @@ weather <- read_excel("data/aus_temp.xlsx") %>%
   dplyr::select(-c(indicator)) %>%
   mutate(value = as.numeric(value)) %>%
   dplyr::select(c(the_date_format, value)) %>%
-  rename(perth_temp = value) %>%
+  rename(aus_temp = value) %>%
   drop_na()
 
 #-----------------SALES---------------------------------------------
