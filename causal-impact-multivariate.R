@@ -10,6 +10,7 @@
 #---------------------------------------
 
 my.zoo <- everything %>% 
+  dplyr::select(c(1,2,7,8)) %>% # Just variables that correlate with influenza
   filter(the_date_format < as.Date("2020-09-01")) %>%
   read.zoo()
 
@@ -44,7 +45,7 @@ impact_plot <- plot(impact, c("original", "pointwise")) +
        subtitle = paste0("Posterior probability of causal effect = ", prob_of_impact,"%. Assumes restriction effects visible from Apr 2020.\nBlack line indicates actual log(influenza rate). Blue line indicates synthetic Bayesian counterfactual."),
        x = "Date",
        y = NULL,
-       caption = "Covariates: HepB rate, HepC rate, number of employed persons, mean Australian temperature, 6 industry's sales data,\nflu vaccine Google search trends, domestic flight hours.") +
+       caption = "Covariates: Mean Australian temperature and flu vaccine Google search trends.") +
   theme_bw()
 print(impact_plot)
 
