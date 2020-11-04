@@ -23,6 +23,7 @@ library(viridis)
 library(zoo)
 library(CausalImpact)
 library(lubridate)
+library(mgcv)
 
 # Turn off scientific notation
 
@@ -43,9 +44,18 @@ if (!exists(keepers)) {
   keepers <- union(keepers, "cleanup_env")
 }
 
+if (!exists(keepers)) {
+  keepers <- c("keepers", "cleaner")
+} else {
+  keepers <- union(keepers, "cleaner")
+}
+
 # Load data and process it
 
-source("processing/disease-prep.R")
+r_files_1 <- list.files("processing", full.names = TRUE, pattern = "\\.[Rr]")
+for(j in r_files_1){
+  source(j)
+}
 
 # Create an output folder if none exists
 
